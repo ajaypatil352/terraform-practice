@@ -82,3 +82,6 @@ variable "listener_routing_type" {
   description = "Type of routing action for the ALB listener"
   type        = string
 }
+
+variable "aws_access_key" {}
+variable "aws_secret_key" {}
