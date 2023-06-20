@@ -1,37 +1,35 @@
 resource "aws_lb" "alb" {
-  name               = "my-alb"
-  internal           = false
-  load_balancer_type = "application"
-  security_groups    = [aws_security_group.alb_sg.id]
-  subnets            = ["subnet-12345678", "subnet-87654321"]  # Replace with your subnet IDs
+  name               = var.alb_name
+  internal           = var.internal_alb
+  load_balancer_type = var.load_balancer_type
+  security_groups    = var.security_groups_ids
+  subnets            = var.subnet_ids
   enable_deletion_protection = true
   idle_timeout {
-    timeout_seconds = 60
+    timeout_seconds = var.idle_timeout
   }
-  tags = {
-    Environment = "production"
-  }
+  tags = var.alb_tags
 }
 
 resource "aws_lb_target_group" "tg" {
-  name     = "my-target-group"
-  port     = 80
-  protocol = "HTTP"
-  vpc_id   = "need to be add"  
+  name     = var.target_group_name
+  port     = var.target_group_port
+  protocol = var.target_group_protocol
+  vpc_id   = var.target_group_vpc_id 
   health_check {
-    path = "/health"
+    path = var.health_check_path
   } 
 }
 
 resource "aws_lb_listener" "alb_listener" {
   load_balancer_arn = aws_lb.alb.arn
-  port              = 80
-  protocol          = "HTTP"
-  ssl_policy        = "policy nned to be add"
-  certificate_arn   = "need to be add certificate arn"
+  port              = var.listener_port
+  protocol          = var.listener_portocol
+  ssl_policy        = var.ssl_policy
+  certificate_arn   = var.certificate_arn
   
   default_action {
-    type             = "forward"
+    type             = var.listener_routing_type
     target_group_arn = aws_lb_target_group.tg.arn
   }
 }
