@@ -5,9 +5,8 @@ resource "aws_lb" "alb" {
   security_groups    = var.security_groups_ids
   subnets            = var.subnet_ids
   enable_deletion_protection = true
-  idle_timeout = {
-    timeout_seconds = var.idle_timeout
-  }
+  idle_timeout =  var.idle_timeout
+  
   tags = var.alb_tags
 }
 
