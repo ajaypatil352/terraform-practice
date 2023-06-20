@@ -68,15 +68,15 @@ variable "listener_protocol" {
   type        = string
 }
 
-variable "ssl_policy" {
-  description = "SSL policy for the ALB listener"
-  type        = string
-}
+#variable "ssl_policy" {
+ # description = "SSL policy for the ALB listener"
+ # type        = string
+#}
 
-variable "certificate_arn" {
-  description = "ARN of the SSL certificate"
-  type        = string
-}
+#variable "certificate_arn" {
+#  description = "ARN of the SSL certificate"
+#  type        = string
+#}
 
 variable "listener_routing_type" {
   description = "Type of routing action for the ALB listener"
