@@ -63,7 +63,7 @@ variable "listener_port" {
   type        = number
 }
 
-variable "listener_protocol" {
+variable "listener_portocol" {
   description = "Protocol to use for the ALB listener"
   type        = string
 }
