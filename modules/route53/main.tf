@@ -19,9 +19,7 @@ resource "aws_route53_record" "routing_policy" {
     for_each = var.routing_policy_type == "failover" ? [var.failover_routing_policy] : []
 
     content {
-      type            = failover_routing_policy.value.type
-      set_identifier  = failover_routing_policy.value.set_id
-      health_check_id = failover_routing_policy.value.health_check
+      type    = failover_routing_policy.value.type
     }
   }
 
