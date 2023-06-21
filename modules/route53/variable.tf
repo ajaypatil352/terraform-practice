@@ -28,8 +28,6 @@ variable "weighted_routing_policy" {
 variable "failover_routing_policy" {
   description = "The failover routing policy configuration"
   type        = object({
-    set_id        = string
-    health_check  = string
     failover_type = string
   })
   default     = null
