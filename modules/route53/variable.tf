@@ -29,6 +29,7 @@ variable "failover_routing_policy" {
   description = "The failover routing policy configuration"
   type        = object({
     failover_type = string
+    set_id       = string
   })
   default     = null
 }
