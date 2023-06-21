@@ -1,16 +1,42 @@
-resource "aws_route53_zone" "route53_zone" {
-  name = "aws_route53.com"  # Replace with your desired domain name
-}
-
-resource "aws_route53_record" "route53_record" {
-  zone_id = aws_route53_zone.route53_zone.zone_id
-  name    = "www.route53.com"  
+resource "aws_route53_record" "routing_policy" {
+  zone_id = aws_route53_zone.example.zone_id
+  name    = var.record_name
   type    = "A"
-  ttl     = 300
 
-  records = [
-    aws_instance.example_ec2_instance.public_ip  # Replace with the appropriate resource, e.g., an EC2 instance
-  ]
+  dynamic "weighted_routing_policy" {
+    for_each = var.routing_policy_type == "weighted" ? [var.weighted_routing_policy] : []
+
+    content {
+      weight = weighted_routing_policy.value.weight
+    }
+  }
+
+  dynamic "failover_routing_policy" {
+    for_each = var.routing_policy_type == "failover" ? [var.failover_routing_policy] : []
+
+    content {
+      type             = failover_routing_policy.value.failover_type
+      set_identifier   = failover_routing_policy.value.set_id
+      health_check_id  = failover_routing_policy.value.health_check
+    }
+  }
+
+  dynamic "geolocation_routing_policy" {
+    for_each = var.routing_policy_type == "geolocation" ? [var.geolocation_routing_policy] : []
+
+    content {
+      continent = "NA"
+      country   = geolocation_routing_policy.value.country_code
+    }
+  }
+
+  dynamic "latency_routing_policy" {
+    for_each = var.routing_policy_type == "latency" ? [var.latency_routing_policy] : []
+
+    content {
+      region = latency_routing_policy.value.region
+    }
+  }
+
+  ttl = 60
 }
-
-
