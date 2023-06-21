@@ -42,5 +42,5 @@ resource "aws_route53_record" "routing_policy" {
     }
   }
 
-  ttl = 60
+  ttl = 3
 }
