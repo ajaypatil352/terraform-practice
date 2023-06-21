@@ -39,7 +39,8 @@ resource "aws_route53_record" "routing_policy" {
       region = latency_routing_policy.value.region
     }
   }
-
+dynamic "alias" {
+    for_each = var.routing_policy_type == "alias" ? [true] : []
   ttl = 60
 }
 
