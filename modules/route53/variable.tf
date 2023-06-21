@@ -50,6 +50,8 @@ variable "latency_routing_policy" {
   })
   default     = null
 }
+variable "aws_access_key" {}
+variable "aws_secret_key" {}
 
 
 
