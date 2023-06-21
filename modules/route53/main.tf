@@ -12,6 +12,7 @@ resource "aws_route53_record" "routing_policy" {
 
     content {
       weight = weighted_routing_policy.value.weight
+      set_identifier  = weighted_routing_policy.value.set_id
     }
   }
 
@@ -20,6 +21,7 @@ resource "aws_route53_record" "routing_policy" {
 
     content {
       type    = failover_routing_policy.value.type
+      set_identifier  = failover_routing_policy.value.set_id
     }
   }
 
@@ -29,6 +31,7 @@ resource "aws_route53_record" "routing_policy" {
     content {
       continent = "NA"
       country   = geolocation_routing_policy.value.country_code
+      set_identifier  = geolocation_routing_policy.value.set_id
     }
   }
 
@@ -37,6 +40,7 @@ resource "aws_route53_record" "routing_policy" {
 
     content {
       region = latency_routing_policy.value.region
+      set_identifier  = latency_routing_policy.value.set_id
     }
   }
   dynamic "alias" {
