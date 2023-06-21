@@ -24,8 +24,8 @@ resource "aws_lb_listener" "alb_listener" {
   load_balancer_arn = aws_lb.alb.arn
   port              = var.listener_port
   protocol          = var.listener_portocol
-#   ssl_policy        = var.ssl_policy
-#   certificate_arn   = var.certificate_arn
+  ssl_policy        = var.ssl_policy
+  certificate_arn   = var.certificate_arn
   
   default_action {
     type             = var.listener_routing_type
