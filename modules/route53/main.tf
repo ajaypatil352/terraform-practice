@@ -11,8 +11,7 @@ resource "aws_route53_record" "routing_policy" {
     for_each = var.routing_policy_type == "weighted" ? [var.weighted_routing_policy] : []
 
     content {
-      set_identifier = weighted_routing_policy.value.set_id
-      weight         = weighted_routing_policy.value.weight
+      weight = weighted_routing_policy.value.weight
     }
   }
 
@@ -20,9 +19,9 @@ resource "aws_route53_record" "routing_policy" {
     for_each = var.routing_policy_type == "failover" ? [var.failover_routing_policy] : []
 
     content {
-      set_identifier   = failover_routing_policy.value.set_id
-      health_check_id  = failover_routing_policy.value.health_check
-      failover_type    = failover_routing_policy.value.failover_type
+      type            = failover_routing_policy.value.type
+      set_identifier  = failover_routing_policy.value.set_id
+      health_check_id = failover_routing_policy.value.health_check
     }
   }
 
@@ -30,8 +29,8 @@ resource "aws_route53_record" "routing_policy" {
     for_each = var.routing_policy_type == "geolocation" ? [var.geolocation_routing_policy] : []
 
     content {
-      set_identifier = geolocation_routing_policy.value.set_id
-      country_code   = geolocation_routing_policy.value.country_code
+      continent = "NA"
+      country   = geolocation_routing_policy.value.country_code
     }
   }
 
@@ -39,11 +38,11 @@ resource "aws_route53_record" "routing_policy" {
     for_each = var.routing_policy_type == "latency" ? [var.latency_routing_policy] : []
 
     content {
-      set_identifier = latency_routing_policy.value.set_id
-      region         = latency_routing_policy.value.region
+      region = latency_routing_policy.value.region
     }
   }
 
   ttl = 60
 }
+
 
