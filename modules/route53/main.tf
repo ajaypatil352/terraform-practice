@@ -1,5 +1,5 @@
 resource "aws_route53_zone" "example" {
-  name = "test.example.com"
+  name = var.domain_name
 }
 
 resource "aws_route53_record" "routing_policy" {
