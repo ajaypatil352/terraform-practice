@@ -1,3 +1,7 @@
+resource "aws_route53_zone" "example" {
+  name = "test.example.com"
+}
+
 resource "aws_route53_record" "routing_policy" {
   zone_id = aws_route53_zone.example.zone_id
   name    = var.record_name
