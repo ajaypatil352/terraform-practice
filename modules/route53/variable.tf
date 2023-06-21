@@ -20,7 +20,6 @@ variable "weighted_routing_policy" {
   description = "The weighted routing policy configuration"
   type        = object({
     weight     = number
-    set_id     = string
   })
   default     = null
 }
@@ -29,7 +28,6 @@ variable "failover_routing_policy" {
   description = "The failover routing policy configuration"
   type        = object({
     failover_type = string
-    set_id       = string
   })
   default     = null
 }
@@ -37,7 +35,6 @@ variable "failover_routing_policy" {
 variable "geolocation_routing_policy" {
   description = "The geolocation routing policy configuration"
   type        = object({
-    set_id       = string
     country_code = string
   })
   default     = null
@@ -46,7 +43,6 @@ variable "geolocation_routing_policy" {
 variable "latency_routing_policy" {
   description = "The latency routing policy configuration"
   type        = object({
-    set_id       = string
     region       = string
   })
   default     = null
