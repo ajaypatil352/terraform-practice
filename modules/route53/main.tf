@@ -41,7 +41,12 @@ resource "aws_route53_record" "routing_policy" {
   }
   dynamic "alias" {
     for_each = var.routing_policy_type == "alias" ? [true] : []
-    
+    content {
+      name                   = "example.com" # Replace with your target alias record name
+      zone_id                = "ZONE_ID"     # Replace with your target zone ID
+      evaluate_target_health = true          # Set to true if you want Route 53 to evaluate the health of the target record
+    }
   }
+  
 ttl = 60
 }
