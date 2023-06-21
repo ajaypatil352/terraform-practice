@@ -1,6 +1,7 @@
 variable "domain_name" {
   description = "The domain name for the hosted zone"
   type        = string
+  default     = "abc.com"
 }
 
 variable "routing_policy_type" {
@@ -12,6 +13,7 @@ variable "routing_policy_type" {
 variable "record_name" {
   description = "The name for the DNS record"
   type        = string
+  default     = "abcd.com"
 }
 
 variable "weighted_routing_policy" {
