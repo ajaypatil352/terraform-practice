@@ -20,8 +20,8 @@ resource "aws_route53_record" "routing_policy" {
 
     content {
       type             = failover_routing_policy.value.failover_type
-      set_identifier   = failover_routing_policy.value.set_id
-      health_check_id  = failover_routing_policy.value.health_check
+      #set_identifier   = failover_routing_policy.value.set_id
+      #health_check_id  = failover_routing_policy.value.health_check
     }
   }
 
