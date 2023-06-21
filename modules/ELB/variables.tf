@@ -68,7 +68,7 @@ variable "listener_portocol" {
   type        = string
 }
 
-#variable "ssl_policy" {
+variable "ssl_policy" {
   description = "SSL policy for the ALB listener"
   type        = string
 }
