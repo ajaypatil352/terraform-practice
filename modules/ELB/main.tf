@@ -4,7 +4,7 @@ resource "aws_lb" "alb" {
   load_balancer_type = var.load_balancer_type
   security_groups    = var.security_groups_ids
   subnets            = var.subnet_ids
-  enable_deletion_protection = true
+  enable_deletion_protection = false
   idle_timeout =  var.idle_timeout
   
   tags = var.alb_tags
