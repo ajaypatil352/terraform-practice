@@ -12,3 +12,11 @@ output "listener_arn" {
   description = "ARN of the ALB listener"
   value       = aws_lb_listener.alb_listener.arn
 }
+output "dns_name" {
+  description = "DNS name of lb"
+  value       = aws_lb.alb.dns_name
+}
+output "alb_id" {
+  description = "id of load balancer"
+  value       = aws_lb.alb.id
+}
