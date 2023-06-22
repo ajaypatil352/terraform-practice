@@ -36,10 +36,13 @@ variable "weighted_routing_policy" {
 variable "failover_routing_policy" {
   description = "Configuration for the failover routing policy."
   type        = object({
-    type = string
+  
+     type           = string
+    set_identifier  = string
+    records         = list(string)
   })
   default     = {
-    set_identifier  = string
+     type            = "PRIMARY"
     set_identifier  = "dev"
     records         = ["dev.example.com"]
   }
