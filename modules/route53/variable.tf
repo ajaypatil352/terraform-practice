@@ -40,8 +40,8 @@ variable "failover_routing_policy" {
   })
   default     = {
     set_identifier  = string
-    records         = list(string)
-    type = "PRIMARY"
+    set_identifier  = "dev"
+    records         = ["dev.example.com"]
   }
 }
 
