@@ -27,6 +27,8 @@ variable "weighted_routing_policy" {
     weight = number
   })
   default     = {
+    set_identifier  = "dev"
+    records         = ["dev.example.com"]
     weight = 50
   }
 }
@@ -37,6 +39,8 @@ variable "failover_routing_policy" {
     type = string
   })
   default     = {
+    set_identifier  = string
+    records         = list(string)
     type = "PRIMARY"
   }
 }
