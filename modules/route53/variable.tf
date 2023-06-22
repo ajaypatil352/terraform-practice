@@ -38,13 +38,13 @@ variable "failover_routing_policy" {
   type        = object({
   
      type           = string
-    set_identifier  = string
-    records         = list(string)
+    #set_identifier  = string
+   # records         = list(string)
   })
   default     = {
      type            = "PRIMARY"
-    set_identifier  = "dev"
-    records         = ["dev.example.com"]
+    #set_identifier  = "dev"
+    #records         = ["dev.example.com"]
   }
 }
 
