@@ -16,36 +16,52 @@ variable "record_name" {
   default     = "abcd.com"
 }
 
-variable "weighted_routing_policy" {
-  description = "The weighted routing policy configuration"
-  type        = object({
-    weight     = number
-  })
-  default     = null
+variable "weighted_rr_sets" {
+  description = "A map of region to weight for weighted routing policy."
+  type        = map(number)
+  default     = {}
 }
 
-variable "failover_routing_policy" {
-  description = "The failover routing policy configuration"
-  type        = object({
-    failover_type = string
-  })
-  default     = null
+variable "failover_rr_sets" {
+  description = "A map of region to failover type for failover routing policy."
+  type        = map(string)
+  default     = {}
 }
 
-variable "geolocation_routing_policy" {
-  description = "The geolocation routing policy configuration"
-  type        = object({
-    country_code = string
-  })
-  default     = null
+variable "geolocation_rr_sets" {
+  description = "A map of location to routing type for geolocation routing policy."
+  type        = map(string)
+  default     = {}
 }
 
-variable "latency_routing_policy" {
-  description = "The latency routing policy configuration"
-  type        = object({
-    region       = string
-  })
-  default     = null
+
+variable "latency_rr_sets" {
+  description = "A map of region to latency routing type for latency routing policy."
+  type        = map(string)
+  default     = {}
+}
+variable "weighted_routing_policy_enabled" {
+  description = "Enable weighted routing policy."
+  type        = bool
+  default     = false
+}
+
+variable "failover_routing_policy_enabled" {
+  description = "Enable failover routing policy."
+  type        = bool
+  default     = false
+}
+
+variable "geolocation_routing_policy_enabled" {
+  description = "Enable geolocation routing policy."
+  type        = bool
+  default     = false
+}
+
+variable "latency_routing_policy_enabled" {
+  description = "Enable latency routing policy."
+  type        = bool
+  default     = false
 }
 variable "aws_access_key" {}
 variable "aws_secret_key" {}
