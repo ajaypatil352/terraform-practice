@@ -12,8 +12,8 @@ resource "aws_route53_record" "routing_policy" {
 
     content {
       weight = weighted_routing_policy.value.weight
-     #set_identifier  = weighted_routing_policy.value.set_identifier
-      #records         = weighted_routing_policy.value.records
+     set_identifier  = weighted_routing_policy.value.set_identifier
+      records         = weighted_routing_policy.value.records
     }
   }
 
@@ -22,8 +22,8 @@ resource "aws_route53_record" "routing_policy" {
 
     content {
       type    = failover_routing_policy.value.type
-      set_identifier  = failover_routing_policy.value.set_identifier
-      records         = failover_routing_policy.value.records
+     # set_identifier  = failover_routing_policy.value.set_identifier
+      #records         = failover_routing_policy.value.records
     }
   }
 
