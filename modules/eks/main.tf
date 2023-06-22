@@ -32,3 +32,19 @@ resource "aws_ecs_task_definition" "my_task_definition" {
         }
       ],
       "essential": true
+    }
+  ])
+}
+
+# Create a service within the cluster
+resource "aws_ecs_service" "my_service" {
+  name            = var.service_name
+  cluster         = aws_ecs_cluster.my_cluster.id
+  task_definition = aws_ecs_task_definition.my_task_definition.arn
+  desired_count   = var.service_desired_count
+  launch_type     = "EC2"
+
+  network_configuration {
+    subnets = [aws_subnet.ecs_subnet.id]
+  }
+}
