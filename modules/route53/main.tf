@@ -12,8 +12,8 @@ resource "aws_route53_record" "routing_policy" {
 
     content {
       weight = weighted_routing_policy.value.weight
-      set_identifier = "dev"
-      records        = ["dev.example.com"]
+      #set_identifier = "dev"
+     # records        = ["dev.example.com"]
     }
   }
 
