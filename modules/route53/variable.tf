@@ -1,12 +1,15 @@
 variable "domain_name" {
   description = "The domain name for the Route 53 zone."
   type        = string
+  default     = "example.com"
 }
 
 variable "record_name" {
   description = "The name of the Route 53 record."
   type        = string
+  default     = "example-record"
 }
+
 
 variable "routing_policy_type" {
   description = "The type of routing policy to use."
