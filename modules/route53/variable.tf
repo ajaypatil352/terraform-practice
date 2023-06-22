@@ -14,7 +14,7 @@ variable "record_name" {
 variable "routing_policy_type" {
   description = "The type of routing policy to use."
   type        = string
-  default     = "weighted"
+  default     = "failover"
   validation {
     condition     = can(regex("^weighted$|^failover$|^geolocation$|^latency$|^alias$", var.routing_policy_type))
     error_message = "Invalid routing_policy_type. Valid values are 'weighted', 'failover', 'geolocation', 'latency', or 'alias'."
