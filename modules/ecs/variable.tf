@@ -8,8 +8,7 @@ variable "task_definition_family" {
   description = "Family of the ECS task definition"
   type        = string
   default     = "my-task-def"
-  cpu         = 10
-  memory    = 512
+
 }
 
 variable "execution_role_arn" {
