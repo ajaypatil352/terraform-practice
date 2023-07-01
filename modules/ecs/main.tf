@@ -1,29 +1,33 @@
+# Configure the AWS provider
+provider "aws" {
+  region = "us-west-2"  # Update with your desired region
+}
 
 # Create an ECS cluster
 resource "aws_ecs_cluster" "my_cluster" {
-  name = "my-cluster"  # Update with your desired cluster name
+  name = var.cluster_name
 }
 
 # Create a task definition
 resource "aws_ecs_task_definition" "my_task_definition" {
-  family                = "my-task-def"  # Update with your desired task definition family
-  execution_role_arn    = "arn:aws:iam::123456789012:role/ecsTaskExecutionRole"  # Update with the ARN of your execution role
+  family                = var.task_definition_family
+  execution_role_arn    = var.execution_role_arn
   network_mode          = "awsvpc"
-  requires_compatibilities = ["FARGATE"]  # Update with the launch type compatibility
+  requires_compatibilities = ["FARGATE"]
 
   container_definitions = <<DEFINITION
 [
   {
     "name": "my-container",
-    "image": "nginx:latest",  # Update with your desired container image
+    "image": "${var.container_image}",
     "portMappings": [
       {
-        "containerPort": 80,  # Update with your container's port
+        "containerPort": ${var.container_port},
         "protocol": "tcp"
       }
     ],
-    "cpu": 1,  # Update with the desired CPU units
-    "memory": 512,  # Update with the desired memory in MB
+    "cpu": ${var.cpu_units},
+    "memory": ${var.memory_mb},
     "essential": true
   }
 ]
@@ -32,27 +36,27 @@ DEFINITION
 
 # Create an ECS service
 resource "aws_ecs_service" "my_service" {
-  name            = "my-service"  # Update with your desired service name
+  name            = var.service_name
   cluster         = aws_ecs_cluster.my_cluster.id
   task_definition = aws_ecs_task_definition.my_task_definition.arn
-  desired_count   = 1 # Update with your desired number of tasks
+  desired_count   = var.desired_count
 
   deployment_controller {
     type = "ECS"
   }
 
   network_configuration {
-    subnets         = [aws_vpc.my_vpc.public_subnets[0]]  # Update with your desired subnets
+    subnets         = [var.subnet_id]
     security_groups = [aws_security_group.my_security_group.id]
   }
 }
 
 # Create a VPC for the ECS cluster
 resource "aws_vpc" "my_vpc" {
-  cidr_block = "10.0.0.0/16"  # Update with your desired VPC CIDR block
+  cidr_block = var.vpc_cidr_block
 
   tags = {
-    Name = "my-vpc"  # Update with your desired VPC name
+    Name = var.vpc_name
   }
 }
 
@@ -77,3 +81,21 @@ resource "aws_main_route_table_association" "my_association" {
   route_table_id = aws_route_table.my_route_table.id
 }
 
+# Create a security group for the ECS cluster
+resource "aws_security_group" "my_security_group" {
+  vpc_id = aws_vpc.my_vpc.id
+
+  ingress {
+    from_port   = var.container_port
+    to_port     = var.container_port
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
