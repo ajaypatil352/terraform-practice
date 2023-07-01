@@ -64,7 +64,7 @@ variable "vpc_name" {
 variable "subnet_id" {
   description = "ID of the subnet to use"
   type        = string
-  default     = ""
+  default     = "subnet-0468f5485183afd26"
 }
 
 variable "gateway_id" {
