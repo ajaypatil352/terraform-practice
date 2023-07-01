@@ -76,3 +76,6 @@ variable "gateway_id" {
   default     = ""
 }
 
+variable "aws_access_key" {}
+variable "aws_secret_key" {}
+
