@@ -1,3 +1,4 @@
+
 # Create an ECS cluster
 resource "aws_ecs_cluster" "my_cluster" {
   name = "my-cluster"  # Update with your desired cluster name
@@ -34,7 +35,7 @@ resource "aws_ecs_service" "my_service" {
   name            = "my-service"  # Update with your desired service name
   cluster         = aws_ecs_cluster.my_cluster.id
   task_definition = aws_ecs_task_definition.my_task_definition.arn
-  desired_count   = 2  # Update with your desired number of tasks
+  desired_count   = 1 # Update with your desired number of tasks
 
   deployment_controller {
     type = "ECS"
@@ -76,26 +77,3 @@ resource "aws_main_route_table_association" "my_association" {
   route_table_id = aws_route_table.my_route_table.id
 }
 
-# Create a security group for the ECS cluster
-resource "aws_security_group" "my_security_group" {
-  vpc_id = aws_vpc.my_vpc.id
-
-  ingress {
-    from_port   = 80  # Update with your desired port
-    to_port     = 80  # Update with your desired port
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-}
-
-# Output the ECS cluster's ARN
-output "ecs_cluster_arn" {
-  value = aws_ecs_cluster.my_cluster.arn
-}
