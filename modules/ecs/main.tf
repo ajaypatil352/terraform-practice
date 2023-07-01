@@ -8,13 +8,12 @@ resource "aws_ecs_task_definition" "my_task_definition" {
   execution_role_arn       = var.execution_role_arn
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
-
+  cpu                      = var.cpu_units
   container_definitions    = jsonencode([
     {
       name          = "my-container"
       image         = var.container_image
-      cpu           = 1
-      memory        = 512
+      memory        = var.memory_mb
       essential     = true
       portMappings  = [
         {
