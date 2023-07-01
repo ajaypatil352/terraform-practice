@@ -7,7 +7,7 @@ resource "aws_ecs_task_definition" "my_task_definition" {
   family                   = var.task_definition_family
   execution_role_arn       = var.execution_role_arn
   network_mode             = "awsvpc"
-  requires_compatibilities = ["FARGATE"]
+  
 
   cpu                      = 256
 
