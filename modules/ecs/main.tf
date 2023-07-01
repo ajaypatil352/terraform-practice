@@ -9,7 +9,7 @@ resource "aws_ecs_task_definition" "my_task_definition" {
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
 
-  cpu                      = var.cpu_units
+  cpu                      = 1
 
   container_definitions    = jsonencode([
     {
