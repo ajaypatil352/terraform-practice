@@ -13,15 +13,16 @@ resource "aws_ecs_task_definition" "my_task_definition" {
     {
       name          = "my-container"
       image         = var.container_image
+      cpu           = var.cpu_units
+      memory        = var.memory_mb
+      essential     = true
       portMappings  = [
         {
           containerPort = var.container_port
           protocol      = "tcp"
         }
       ]
-      cpu           = 1
-      memory        = 512
-      essential     = true
+     
     }
   ])
 }
