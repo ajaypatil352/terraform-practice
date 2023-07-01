@@ -37,6 +37,20 @@ variable "service_name" {
   default     = "my-service"
 }
 
+
+variable "cpu_units" {
+  description = "CPU units for the task"
+  type        = number
+  default     = 1
+}
+
+variable "memory_mb" {
+  description = "Memory in MB for the task"
+  type        = number
+  default     = 512
+}
+
+
 variable "desired_count" {
   description = "Desired number of tasks for the service"
   type        = number
