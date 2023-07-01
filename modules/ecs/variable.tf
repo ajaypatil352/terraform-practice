@@ -29,17 +29,7 @@ variable "container_port" {
   default     = 80
 }
 
-variable "cpu_units" {
-  description = "CPU units for the task"
-  type        = number
-  default     = 1
-}
 
-variable "memory_mb" {
-  description = "Memory in MB for the task"
-  type        = number
-  default     = 512
-}
 
 variable "service_name" {
   description = "Name of the ECS service"
