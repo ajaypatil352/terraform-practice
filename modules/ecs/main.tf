@@ -3,7 +3,6 @@ resource "aws_ecs_cluster" "my_cluster" {
   name = var.cluster_name
 }
 
-# Create a task definition
 resource "aws_ecs_task_definition" "my_task_definition" {
   family                = var.task_definition_family
   execution_role_arn    = var.execution_role_arn
@@ -28,6 +27,7 @@ resource "aws_ecs_task_definition" "my_task_definition" {
 ]
 DEFINITION
 }
+
 
 # Create an ECS service
 resource "aws_ecs_service" "my_service" {
