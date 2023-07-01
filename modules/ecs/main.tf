@@ -4,29 +4,28 @@ resource "aws_ecs_cluster" "my_cluster" {
 }
 
 resource "aws_ecs_task_definition" "my_task_definition" {
-  family                = var.task_definition_family
-  execution_role_arn    = var.execution_role_arn
-  network_mode          = "awsvpc"
+  family                   = var.task_definition_family
+  execution_role_arn       = var.execution_role_arn
+  network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
 
-  container_definitions = <<DEFINITION
-[
-  {
-    "name": "my-container",
-    "image": "${var.container_image}",
-    "portMappings": [
-      {
-        "containerPort": ${var.container_port},
-        "protocol": "tcp"
-      }
-    ],
-    "cpu": ${var.cpu_units},
-    "memory": ${var.memory_mb},
-    "essential": true
-  }
-]
-DEFINITION
+  container_definitions    = jsonencode([
+    {
+      name          = "my-container"
+      image         = var.container_image
+      portMappings  = [
+        {
+          containerPort = var.container_port
+          protocol      = "tcp"
+        }
+      ]
+      cpu           = var.cpu_units
+      memory        = var.memory_mb
+      essential     = true
+    }
+  ])
 }
+
 
 
 # Create an ECS service
