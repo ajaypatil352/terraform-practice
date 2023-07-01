@@ -13,7 +13,7 @@ variable "task_definition_family" {
 variable "execution_role_arn" {
   description = "ARN of the execution role"
   type        = string
-  default     = "arn:aws:iam::123456789012:role/ecsTaskExecutionRole"
+  default     = "arn:aws:iam::442365855901:user/terraform"
 }
 
 variable "container_image" {
