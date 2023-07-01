@@ -37,7 +37,24 @@ resource "aws_ecs_service" "my_service" {
   deployment_controller {
     type = "ECS"
   }
+# Create a security group for the ECS cluster
+resource "aws_security_group" "my_security_group" {
+  vpc_id = aws_vpc.my_vpc.id
 
+  ingress {
+    from_port   = var.container_port
+    to_port     = var.container_port
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
   network_configuration {
     subnets         = [var.subnet_id]
     security_groups = [aws_security_group.my_security_group.id]
@@ -74,21 +91,4 @@ resource "aws_main_route_table_association" "my_association" {
   route_table_id = aws_route_table.my_route_table.id
 }
 
-# Create a security group for the ECS cluster
-resource "aws_security_group" "my_security_group" {
-  vpc_id = aws_vpc.my_vpc.id
 
-  ingress {
-    from_port   = var.container_port
-    to_port     = var.container_port
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-}
