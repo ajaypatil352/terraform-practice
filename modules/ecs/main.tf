@@ -8,7 +8,9 @@ resource "aws_ecs_task_definition" "my_task_definition" {
   execution_role_arn       = var.execution_role_arn
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
+
   cpu                      = var.cpu_units
+
   container_definitions    = jsonencode([
     {
       name          = "my-container"
@@ -21,12 +23,9 @@ resource "aws_ecs_task_definition" "my_task_definition" {
           protocol      = "tcp"
         }
       ]
-     
     }
   ])
 }
-
-
 
 # Create an ECS service
 resource "aws_ecs_service" "my_service" {
