@@ -19,8 +19,8 @@ resource "aws_ecs_task_definition" "my_task_definition" {
           protocol      = "tcp"
         }
       ]
-      cpu           = var.cpu_units
-      memory        = var.memory_mb
+      cpu           = 1
+      memory        = 512
       essential     = true
     }
   ])
