@@ -63,8 +63,14 @@ variable "vpc_name" {
 
 variable "subnet_id" {
   description = "ID of the subnet to use"
-  type        = string
-  default     = "subnet-0468f5485183afd26"
+  type        = list(string)
+  default     = ["subnet-0468f5485183afd26"]
+}
+
+variable "security_groups" {
+  description = "security group"
+  type        = list(string)
+  default     =  ["sg-0abfff9a7f0408b50"]
 }
 
 variable "gateway_id" {
