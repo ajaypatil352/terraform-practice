@@ -15,3 +15,5 @@ variable "versioning_status" {
   type        = string
   default     = "Enabled"
 }
+variable "aws_access_key" {}
+variable "aws_secret_key" {}
