@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "my-bucket1507" {
-  bucket = "my-bucket1507"
+  bucket = var.bucket
 }
 
 resource "aws_s3_bucket_acl" "my-bucket1507" {
