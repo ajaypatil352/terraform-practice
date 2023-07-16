@@ -4,11 +4,11 @@ variable "bucket_name" {
   default     = "my-bucket1507"
 }
 
-variable "bucket_acl" {
-  description = "ACL for the S3 bucket"
-  type        = string
-  default     = "private"
-}
+#variable "bucket_acl" {
+ # description = "ACL for the S3 bucket"
+  #type        = string
+  #default     = "private"
+#}
 
 #variable "versioning_status" {
 #  description = "Status of bucket versioning"
