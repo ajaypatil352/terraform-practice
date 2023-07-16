@@ -3,7 +3,7 @@ resource "aws_s3_bucket" "my-bucket1508" {
 }
 
 resource "aws_s3_bucket_acl" "my-bucket1508" {
-  bucket = aws_s3_bucket.my-bucket1507.id
+  bucket = aws_s3_bucket.my-bucket1508.id
   acl    = var.bucket_acl
 }
 
