@@ -10,10 +10,10 @@ variable "bucket_acl" {
   default     = "private"
 }
 
-variable "versioning_status" {
-  description = "Status of bucket versioning"
-  type        = string
-  default     = "Enabled"
-}
+#variable "versioning_status" {
+#  description = "Status of bucket versioning"
+#  type        = string
+#  default     = "Enabled"
+#}
 variable "aws_access_key" {}
 variable "aws_secret_key" {}
