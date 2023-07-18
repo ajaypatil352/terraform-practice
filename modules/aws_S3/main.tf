@@ -10,6 +10,6 @@ resource "aws_s3_bucket_acl" "my-bucket1808" {
 resource "aws_s3_bucket_versioning" "versioning_example" {
   bucket = aws_s3_bucket.my-bucket1808.id
   versioning_configuration {
-    status = "Enabled"
+    status = var.versioning_status
   }
 }
