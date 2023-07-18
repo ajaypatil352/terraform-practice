@@ -32,6 +32,7 @@ variable "parameter_group_name"{
   type        = string
   description = "this is parameter group"
 }
-
+variable "aws_access_key" {}
+variable "aws_secret_key" {}
 
 
