@@ -7,7 +7,7 @@ variable "bucket_name" {
 variable "bucket_acl" {
   description = "ACL for the S3 bucket"
   type        = string
-  default     = "public"
+  default     = "public-read"
 }
 
 variable "versioning_status" {
