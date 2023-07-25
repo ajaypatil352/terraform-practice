@@ -15,9 +15,9 @@ resource "aws_lb_target_group" "tg" {
   port     = var.target_group_port
   protocol = var.target_group_protocol
   vpc_id   = var.target_group_vpc_id 
-  health_check {
-    path = var.health_check_path
-  } 
+  #health_check {
+  #  path = var.health_check_path
+ # } 
 }
 
 resource "aws_lb_listener" "nlb_listener" {
@@ -28,7 +28,7 @@ resource "aws_lb_listener" "nlb_listener" {
   #certificate_arn   = var.certificate_arn
   
   default_action {
-    type             = var.listener_routing_type
+    type             = "forward"
     target_group_arn = aws_lb_target_group.tg.arn
   }
 }
