@@ -13,7 +13,7 @@ target_group_name = "my-target-group"
 target_group_port = 80
 target_group_protocol = "HTTP"
 target_group_vpc_id = "vpc-0f805e416c315a1fa"
-# health_check_path = "/health"
+health_check_path = "/health"
 
 listener_port = 80
 listener_portocol = "tcp"
