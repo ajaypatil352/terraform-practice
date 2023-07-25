@@ -16,7 +16,7 @@ target_group_vpc_id = "vpc-0f805e416c315a1fa"
 health_check_path = "/health"
 
 listener_port = 80
-listener_portocol = "tcp"
+listener_portocol = "TCP"
 # ssl_policy = ""
 # certificate_arn = ""
 
