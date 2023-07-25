@@ -7,7 +7,7 @@ resource "aws_lb" "nlb" {
   enable_deletion_protection = false
   idle_timeout =  var.idle_timeout
   
-  tags = var.alb_tags
+  tags = var.nlb_tags
 }
 
 resource "aws_lb_target_group" "tg" {
