@@ -13,10 +13,10 @@ variable "load_balancer_type" {
   type        = string
 }
 
-variable "security_groups_ids" {
-  description = "List of security group IDs associated with the Application Load Balancer"
-  type        = list(string)
-}
+#variable "security_groups_ids" {
+ # description = "List of security group IDs associated with the Application Load Balancer"
+ # type        = list(string)
+#}
 
 variable "subnet_ids" {
   description = "List of subnet IDs for the Application Load Balancer"
