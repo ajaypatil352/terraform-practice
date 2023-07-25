@@ -1,7 +1,7 @@
 nlb_name = "my-network-lb"
 internal_nlb = false
 load_balancer_type = "network"
-security_groups_ids = ["sg-0abfff9a7f0408b50"]
+# security_groups_ids = ["sg-0abfff9a7f0408b50"]
 subnet_ids = ["subnet-0468f5485183afd26", "subnet-0f3cb7bf73de0e8ef"]
 idle_timeout = 60
 nlb_tags = {
