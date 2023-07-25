@@ -2,7 +2,7 @@ resource "aws_lb" "nlb" {
   name               = var.nlb_name
   internal           = var.internal_nlb
   load_balancer_type = var.load_balancer_type
-  security_groups    = var.security_groups_ids
+ # security_groups    = var.security_groups_ids
   subnets            = var.subnet_ids
   enable_deletion_protection = false
   idle_timeout =  var.idle_timeout
